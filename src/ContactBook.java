@@ -95,15 +95,11 @@ public class ContactBook extends JFrame implements ActionListener {
 
 			anc.setVisible(true);
 		} else if (e.getSource() == btnEdit) {
-			anc.btnSubmit.setText("UPDATE");
-
-			Contact selected = list.getSelectedValue();
-			anc.txtName.setText(selected.name);
-			anc.txtPhone.setText(selected.phone);
-			anc.selectedIndex = list.getSelectedIndex();
-
-			anc.setVisible(true);
-
+            Contact selected = list.getSelectedValue();
+            if (selected != null) { // Check if a contact is selected
+                EditContactWindow editWindow = new EditContactWindow(selected);
+                editWindow.setVisible(true);
+            }
 		} else if (e.getSource() == btnExit) {
 			System.exit(0);
 		} else if (e.getSource() == btnLoad) {
